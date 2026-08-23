@@ -17,12 +17,16 @@ engine/
   supervisor.py stagnation/rotation rules                  [used by plugin]
   manage.py    list / enable / disable / scenario / approve
 plugins/
-  planning/    feature  deep-think gate (pre_gate veto, exit 4)
-  supervision/ feature  stagnation watch + rotation + halt (pre_gate veto)
-  coding/      domain   runtime benchmark evaluator
-  docs-sync/   domain   AST doc-coverage evaluator
-  research/    domain   live-web citation verification
-  software/    domain   enterprise SDLC gauntlet
+  planning/              feature  deep-think gate (pre_gate veto, exit 4)
+  supervision/           feature  stagnation watch + rotation + halt (pre_gate veto)
+  goal-registry/         feature  stores THE user's final goal; gates refuse without it (exit 7)
+  completion-checklist/  feature  completion EARNED: vetoes task_complete until every
+                                  checklist proof passes (on_completion veto, exit 6)
+  progress-reporter/     feature  status after every gate; sole voice for "complete"
+  coding/                domain   runtime benchmark evaluator
+  docs-sync/             domain   AST doc-coverage evaluator
+  research/              domain   live-web citation verification
+  software/              domain   enterprise SDLC gauntlet
 domains/<x>/   the actual labs (evaluator, candidate, knowledge, state)
 scenarios.json         named enable/disable bundles
 scenarios.local.json   manual toggles (manage.py writes here)
