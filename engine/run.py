@@ -38,6 +38,13 @@ def git(*args, cwd: Path) -> subprocess.CompletedProcess:
 
 
 def main() -> int:
+    # Windows consoles (cp1252) must never crash on non-ASCII output
+    for stream in (sys.stdout, sys.stderr):
+        if stream is not None and hasattr(stream, "reconfigure"):
+            try:
+                stream.reconfigure(encoding="utf-8", errors="replace")
+            except Exception:
+                pass
     ap = argparse.ArgumentParser()
     ap.add_argument("domain", help="plugin name, e.g. coding")
     ap.add_argument("--note", required=True)

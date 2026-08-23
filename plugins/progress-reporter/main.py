@@ -34,10 +34,10 @@ def report(ctx):
                  f"stagnation={state.get('stagnation')}/{3}")
 
     if state.get("status") == "completed" and done:
-        lines.append("  VERDICT  : ✅ PROJECT COMPLETE — all checklist items "
-                     "verified with recorded proof.")
+        lines.append("  VERDICT  : [COMPLETE] project finished - all "
+                     "checklist items verified with recorded proof.")
     elif state.get("status") == "completed":
-        lines.append("  VERDICT  : ⚠ score complete but checklist incomplete - "
-                       "NOT reporting completion to the user.")
+        lines.append("  VERDICT  : [WARN] score complete but checklist "
+                       "incomplete - NOT reporting completion to the user.")
     print("\n".join(lines))
     return None
