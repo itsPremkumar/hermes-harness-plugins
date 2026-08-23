@@ -1,0 +1,14 @@
+{
+  "project": "coding",
+  "goal": "Push coding domain throughput past 8M rows/sec with the sort contract intact and every attempt gated",
+  "criteria": [
+    "best_score >= 8000000 recorded in lineage",
+    "sort contract holds on all randomized cases"
+  ],
+  "constraints": [
+    "no external deps"
+  ],
+  "approved_by_user": true,
+  "approved_at": "2026-08-23T16:32:53",
+  "goal_hash": "293a5c68c502c847"
+}

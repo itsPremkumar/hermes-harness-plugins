@@ -1,0 +1,41 @@
+[
+  {
+    "id": "goal-mirror",
+    "item": "GOAL.md exists and matches registered goal",
+    "proof_cmd": "test -f goals/coding.GOAL.md",
+    "status": "PASS",
+    "evidence": {
+      "exit": 0,
+      "output_tail": "",
+      "ms": 0.05,
+      "hash": "47c223e43851"
+    },
+    "updated": "2026-08-23T16:34:44"
+  },
+  {
+    "id": "ledger-proof",
+    "item": "lineage ledger exists with accepted history",
+    "proof_cmd": "python -c \"import json,sys; lines=[l for l in open('domains/coding/lineage.jsonl',encoding='utf-8') if l.strip()]; recs=[json.loads(l) for l in lines]; sys.exit(0 if any(r.get('decision')=='ACCEPTED' for r in recs) else 1)\"",
+    "status": "PASS",
+    "evidence": {
+      "exit": 0,
+      "output_tail": "",
+      "ms": 0.11,
+      "hash": "9f0424e56784"
+    },
+    "updated": "2026-08-23T16:34:07"
+  },
+  {
+    "id": "throughput-target",
+    "item": "best_score >= 8,000,000 rows/sec",
+    "proof_cmd": "python -c \"import json,sys; s=json.load(open('domains/coding/state.json')); sys.exit(0 if (s.get('best_score') or 0)>=8000000 else 1)\"",
+    "status": "FAIL",
+    "evidence": {
+      "exit": 1,
+      "output_tail": "",
+      "ms": 0.08,
+      "hash": "0a0f2995df73"
+    },
+    "updated": "2026-08-23T16:35:24"
+  }
+]

@@ -11,8 +11,10 @@ Effective enabled-set = manifest.enabled  overlaid by  scenarios.json[active]
 overlaid by scenarios.local.json (manual toggles via engine/manage.py).
 
 Hooks (executed in priority order):
-    pre_gate(ctx)   -> None | dict(action="VETO", exit_code=N, payload={...})
-    post_gate(ctx)  -> None
+    pre_gate(ctx)       -> None | dict(action="VETO", exit_code=N, payload={...})
+    on_completion(ctx)  -> None | dict(action="VETO", exit_code=6, payload={...})
+                           (runs INSTEAD of declaring task_complete)
+    post_gate(ctx)      -> None
 The invariant core (evaluate -> commit gate -> lineage -> checkpoint)
 is NOT hookable: correctness of the judge never depends on plugins.
 """
@@ -23,7 +25,7 @@ import json
 import sys
 from pathlib import Path
 
-HOOKS = ("pre_gate", "post_gate")
+HOOKS = ("pre_gate", "on_completion", "post_gate")
 
 
 def _load_module(path: Path, name: str):

@@ -66,8 +66,9 @@ def main() -> int:
             print(json.dumps({"ok": False, "error": "approve needs <domain>"}, indent=2))
             return 3
         import subprocess
-        r = subprocess.run([sys.executable, str(root / "engine" / "plan.py"), args.target],
-                           capture_output=True, text=True)
+        r = subprocess.run(
+            [sys.executable, str(root / "engine" / "plan.py"), "domains/" + args.target],
+            capture_output=True, text=True)
         print(r.stdout.strip())
         return r.returncode
 

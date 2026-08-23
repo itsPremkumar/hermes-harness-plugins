@@ -1,0 +1,8 @@
+{
+  "name": "progress-reporter",
+  "type": "feature",
+  "version": "1.0.0",
+  "enabled": true,
+  "description": "Human-readable status after every gate; ONLY voice allowed to declare project complete (and only on full checklist PASS).",
+  "provides": ["hooks:post_gate"]
+}

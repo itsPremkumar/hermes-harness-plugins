@@ -1,0 +1,11 @@
+{
+  "project": "docs-sync",
+  "goal": "Bring store-client API reference to 100% verified coverage with zero fabricated signatures",
+  "criteria": [
+    "evaluator reports coverage 100 and correct true"
+  ],
+  "constraints": [],
+  "approved_by_user": true,
+  "approved_at": "2026-08-23T16:37:38",
+  "goal_hash": "936e4b8531f8d10b"
+}

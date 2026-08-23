@@ -1,0 +1,8 @@
+{
+  "name": "completion-checklist",
+  "type": "feature",
+  "version": "1.0.0",
+  "enabled": true,
+  "description": "Project is COMPLETE only when every checklist item PASSes its executable proof; vetoes task_complete otherwise (exit 6).",
+  "provides": ["hooks:on_completion"]
+}

@@ -1,13 +1,13 @@
 {
-  "iteration": 0,
-  "attempts": 0,
+  "iteration": 4,
+  "attempts": 4,
   "accepted": 0,
-  "best_score": null,
-  "best_version": null,
-  "strategy": "",
-  "strategy_index": 0,
+  "best_score": 100,
+  "best_version": "docs-sync-a001",
+  "strategy": "quality-polish",
+  "strategy_index": 1,
   "strategy_cycles": 0,
   "stagnation": 0,
-  "status": "running",
+  "status": "completed",
   "plan_hash": "8e4f65c2dfbb2f80"
 }

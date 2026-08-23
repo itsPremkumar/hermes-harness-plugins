@@ -93,14 +93,20 @@ def main() -> int:
         print(json.dumps(veto.get("payload", {}), indent=2))
         return int(veto.get("exit_code", 5))
 
-    # ---- completion target ----------------------------------------------
+    # ---- completion target: plugins may veto the word "complete" --------
     target = mf.get("complete_at")
     if target is not None and state.get("best_score") == target:
+        veto = reg.run_hook("on_completion", ctx)
+        if veto:
+            State(state_file).save(ctx["state"])
+            print(json.dumps(veto.get("payload", {}), indent=2))
+            return int(veto.get("exit_code", 6))
         state["status"] = "completed"
         State(state_file).save(state)
         print(json.dumps({"event": "task_complete",
                           "reason": f"target score {target} achieved",
                           "best_score": target}, indent=2))
+        reg.run_hook("post_gate", ctx)   # reporter gets the last word
         return 2
 
     if not candidate.exists():

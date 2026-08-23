@@ -1,0 +1,28 @@
+[
+  {
+    "id": "cov100",
+    "item": "coverage score is 100",
+    "proof_cmd": "python -c \"import json,sys,importlib.util; spec=importlib.util.spec_from_file_location('e','domains/docs-sync/evaluator.py'); m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m); d=m.evaluate('domains/docs-sync/lab/docs.md'); sys.exit(0 if d['correct'] and d['score']==100 else 1)\"",
+    "status": "PASS",
+    "evidence": {
+      "exit": 0,
+      "output_tail": "",
+      "ms": 0.1,
+      "hash": "97e116b051d8"
+    },
+    "updated": "2026-08-23T16:42:35"
+  },
+  {
+    "id": "no-fabrication",
+    "item": "no fabricated signatures in docs",
+    "proof_cmd": "python -c \"import sys,importlib.util; spec=importlib.util.spec_from_file_location('e','domains/docs-sync/evaluator.py'); m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m); d=m.evaluate('domains/docs-sync/lab/docs.md'); sys.exit(0 if not d['detail'].get('fabricated_signatures') else 1)\"",
+    "status": "PASS",
+    "evidence": {
+      "exit": 0,
+      "output_tail": "",
+      "ms": 0.08,
+      "hash": "db08a7e3a15b"
+    },
+    "updated": "2026-08-23T16:37:48"
+  }
+]

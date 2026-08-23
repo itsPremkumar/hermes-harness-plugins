@@ -1,0 +1,8 @@
+{
+  "name": "goal-registry",
+  "type": "feature",
+  "version": "1.0.0",
+  "enabled": true,
+  "description": "Stores THE user's final goal per project; every gate verifies it; tamper-evident via hash.",
+  "provides": ["hooks:pre_gate", "cli:engine/goal_cli.py"]
+}
