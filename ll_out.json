@@ -1,0 +1,32 @@
+{
+  "correct": true,
+  "score": 100,
+  "detail": {
+    "pillars": {
+      "tests": true,
+      "lint": true,
+      "cli-smoke": true,
+      "packaging": true
+    },
+    "critical_failures": [],
+    "evidence": {
+      "tests": {
+        "tests_run": 7,
+        "note": "exit 0 with >=6 tests"
+      },
+      "lint": {
+        "tool": "ruff",
+        "out": "All checks passed!\n"
+      },
+      "cli-smoke": {
+        "scan_ok": true,
+        "find_ok": true
+      },
+      "packaging": {
+        "readme": true,
+        "license": true,
+        "zero_dependency": true
+      }
+    }
+  }
+}

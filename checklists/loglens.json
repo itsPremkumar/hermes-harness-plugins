@@ -1,0 +1,28 @@
+[
+  {
+    "id": "pillars",
+    "item": "evaluator pillars all green (tests/lint/cli-smoke/packaging)",
+    "proof_cmd": "python -c \"import sys,json; d=json.load(open('ll_out.json')); sys.exit(0 if d['correct'] and d['score']==100 else 1)\"",
+    "status": "PASS",
+    "evidence": {
+      "exit": 0,
+      "output_tail": "",
+      "ms": 0.12,
+      "hash": "748b143b1c90"
+    },
+    "updated": "2026-08-23T17:42:46"
+  },
+  {
+    "id": "github-live",
+    "item": "github.com/itsPremkumar/loglens exists and is public",
+    "proof_cmd": "gh repo view itsPremkumar/loglens --json visibility,isFork",
+    "status": "PASS",
+    "evidence": {
+      "exit": 0,
+      "output_tail": "{\"isFork\":false,\"visibility\":\"PUBLIC\"}\n",
+      "ms": 0.7,
+      "hash": "0a2757640aeb"
+    },
+    "updated": "2026-08-23T17:42:47"
+  }
+]

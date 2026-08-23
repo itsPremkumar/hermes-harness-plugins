@@ -1,0 +1,12 @@
+{
+  "name": "loglens",
+  "type": "domain",
+  "version": "1.0.0",
+  "enabled": true,
+  "description": "REAL OSS project domain: gates the C:/one/loglens repo (tests, lint, live CLI smoke, packaging).",
+  "domain_dir": "domains/loglens",
+  "evaluator": "evaluator.py",
+  "candidate": "../../../loglens",
+  "strategies": ["feature-growth", "robustness-hardening", "output-ergonomics"],
+  "complete_at": 100
+}
