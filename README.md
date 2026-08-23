@@ -1,5 +1,7 @@
 # hermes-harness-plugins
 
+![CI](https://github.com/itsPremkumar/hermes-harness-plugins/actions/workflows/ci.yml/badge.svg)
+
 **Plugin edition** of hermes-harness — every feature is an optional plugin
 around a small invariant kernel, so you can modify/remove/enable pieces per
 scenario without touching engine code. (The original monolith lives at
