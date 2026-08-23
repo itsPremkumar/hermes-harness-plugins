@@ -3,3 +3,6 @@ __pycache__/
 scenarios.local.json
 goals/*.tmp
 checklists/*.tmp
+.lock
+night_out.json
+ll_out.json
