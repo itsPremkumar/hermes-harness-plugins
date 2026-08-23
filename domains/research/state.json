@@ -1,0 +1,12 @@
+{
+  "iteration": 0,
+  "attempts": 0,
+  "accepted": 0,
+  "best_score": null,
+  "best_version": null,
+  "strategy": "",
+  "strategy_index": 0,
+  "strategy_cycles": 0,
+  "stagnation": 0,
+  "status": "running"
+}

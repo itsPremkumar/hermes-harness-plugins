@@ -1,0 +1,12 @@
+{
+  "name": "docs-sync",
+  "complete_at": 100,
+  "description": "Documentation-domain: bring API reference docs to complete, verifiable coverage against the AST of the code. Different feedback channel than coding: static analysis instead of runtime benchmarks.",
+  "evaluator": "evaluator.py",
+  "candidate": "lab/docs.md",
+  "strategies": [
+    "expand-coverage",
+    "quality-polish",
+    "structural-audit"
+  ]
+}

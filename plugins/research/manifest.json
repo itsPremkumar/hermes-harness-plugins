@@ -1,0 +1,12 @@
+{
+  "name": "research",
+  "type": "domain",
+  "version": "1.0.0",
+  "enabled": true,
+  "description": "Live-web citation verification: every claim's URL must resolve, no API keys.",
+  "domain_dir": "domains/research",
+  "evaluator": "evaluator.py",
+  "candidate": "lab/brief.md",
+  "strategies": ["broaden-sources", "verify-and-repair", "deepen-claims"],
+  "complete_at": 100
+}

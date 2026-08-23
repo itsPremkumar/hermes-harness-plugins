@@ -1,0 +1,8 @@
+{
+  "name": "supervision",
+  "type": "feature",
+  "version": "1.0.0",
+  "enabled": true,
+  "description": "Stagnation watch, strategy rotation, halt-on-exhaustion with replan handoff.",
+  "provides": ["hooks:pre_gate"]
+}

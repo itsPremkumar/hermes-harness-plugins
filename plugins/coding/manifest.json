@@ -1,0 +1,11 @@
+{
+  "name": "coding",
+  "type": "domain",
+  "version": "1.0.0",
+  "enabled": true,
+  "description": "Runtime benchmark + exact correctness gate over solution.py (generalized avo-lab).",
+  "domain_dir": "domains/coding",
+  "evaluator": "evaluator.py",
+  "candidate": "lab/solution.py",
+  "strategies": ["algorithmic", "caching", "builtin-acceleration", "loop-restructuring"]
+}

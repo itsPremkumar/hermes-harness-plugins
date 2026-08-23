@@ -1,0 +1,13 @@
+{
+  "name": "software",
+  "description": "Enterprise software-development domain: the candidate is a WHOLE application repo. Evaluator runs the full SDLC quality gauntlet: tests, lint, security (deps pinned, no hardcoded secrets), Docker hardening (pinned base, non-root, healthcheck), documentation completeness, CI presence. Score = weighted pillar pass-rate; correctness = all CRITICAL pillars green.",
+  "evaluator": "evaluator.py",
+  "candidate": "lab/app",
+  "strategies": [
+    "security-hardening",
+    "test-expansion",
+    "docker-hardening",
+    "docs-completeness"
+  ],
+  "complete_at": 100
+}

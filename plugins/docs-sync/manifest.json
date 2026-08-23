@@ -1,0 +1,12 @@
+{
+  "name": "docs-sync",
+  "type": "domain",
+  "version": "1.0.0",
+  "enabled": true,
+  "description": "Static AST analysis: docs must verbatim-cover the code's real API.",
+  "domain_dir": "domains/docs-sync",
+  "evaluator": "evaluator.py",
+  "candidate": "lab/docs.md",
+  "strategies": ["expand-coverage", "quality-polish", "structural-audit"],
+  "complete_at": 100
+}

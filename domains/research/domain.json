@@ -1,0 +1,12 @@
+{
+  "name": "research",
+  "complete_at": 100,
+  "description": "Research domain: every claim in the brief must cite URLs that verifiably resolve on the live internet. Feedback channel = live citation verification (no API keys).",
+  "evaluator": "evaluator.py",
+  "candidate": "lab/brief.md",
+  "strategies": [
+    "broaden-sources",
+    "verify-and-repair",
+    "deepen-claims"
+  ]
+}

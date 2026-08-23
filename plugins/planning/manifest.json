@@ -1,0 +1,8 @@
+{
+  "name": "planning",
+  "type": "feature",
+  "version": "1.0.0",
+  "enabled": true,
+  "description": "Deep-think gate: requires a fresh approved plan.md before any variation attempt.",
+  "provides": ["hooks:pre_gate"]
+}

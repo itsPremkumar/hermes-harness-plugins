@@ -1,0 +1,12 @@
+{
+  "name": "software",
+  "type": "domain",
+  "version": "1.0.0",
+  "enabled": true,
+  "description": "Enterprise SDLC gauntlet over a whole app repo (tests/lint/secrets/docker/deps/docs/ci).",
+  "domain_dir": "domains/software",
+  "evaluator": "evaluator.py",
+  "candidate": "lab/app",
+  "strategies": ["security-hardening", "test-expansion", "docker-hardening", "docs-completeness"],
+  "complete_at": 100
+}

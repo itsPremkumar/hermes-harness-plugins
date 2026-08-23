@@ -1,0 +1,17 @@
+{
+  "_readme": "Scenario bundles layer over manifest 'enabled' flags. Precedence: manifest < _manual < scenario.",
+  "full": {},
+  "no-planning": {
+    "disable": ["planning"]
+  },
+  "research-sprint": {
+    "disable": ["planning"],
+    "enable_only": ["research", "supervision"]
+  },
+  "prod-guard": {
+    "enable_only": ["software", "docs-sync", "planning", "supervision"]
+  },
+  "speedrun": {
+    "disable": ["planning", "supervision"]
+  }
+}
