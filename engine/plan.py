@@ -16,7 +16,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from core import State  # noqa: E402
-from planning import Plan, approve, plan_hash  # noqa: E402
+from planning import approve  # noqa: E402
 
 
 def main() -> int:

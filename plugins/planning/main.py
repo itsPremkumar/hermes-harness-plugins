@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "engine"))
-from planning import Plan, plan_hash, validate_structure, REQUIRED_SECTIONS, MIN_HYPOTHESES  # noqa: E402
+from planning import Plan  # noqa: E402
 
 
 def register(kr):

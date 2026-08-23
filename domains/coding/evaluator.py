@@ -70,20 +70,18 @@ def evaluate(candidate_path) -> dict:
                     "detail": {"failed_case": case_i,
                                "first_mismatch_index": _first_diff(expected, got)}}
 
-    # ---- performance benchmark (best of 3) --------------------------------
+    # ---- performance benchmark (median of 5: robust to outlier trials) ---
     rng = random.Random(999)
     bench = _gen_rows(rng, BENCH_ROWS)
-    best_rate = 0.0
-    for _ in range(3):
+    rates = []
+    for _ in range(5):
         payload = [dict(r) for r in bench]
         t0 = time.perf_counter()
         result = solve(payload)
         dt = time.perf_counter() - t0
-        assert result == solve([]) or True  # keep result alive; correctness already gated
-        rate = len(bench) / max(dt, 1e-9)
-        best_rate = max(best_rate, rate)
-
-    score = int(best_rate)
+        rates.append(len(bench) / max(dt, 1e-9))
+    rates.sort()
+    score = int(rates[len(rates) // 2])
     return {
         "correct": True,
         "score": score,

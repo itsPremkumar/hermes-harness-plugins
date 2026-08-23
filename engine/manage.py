@@ -5,6 +5,7 @@ Usage:
   python engine/manage.py list                     # table of plugins
   python engine/manage.py enable  research         # manual toggle (all scenarios)
   python engine/manage.py disable planning
+  python engine/manage.py reset                    # clear manual toggles
   python engine/manage.py scenario full            # set active bundle for runs
   python engine/manage.py approve domains/coding   # convenience: plan approval
 """
@@ -29,12 +30,18 @@ def save_json(path: Path, data: dict) -> None:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["list", "enable", "disable", "scenario", "approve"])
+    ap.add_argument("cmd", choices=["list", "enable", "disable", "reset",
+                                    "scenario", "approve"])
     ap.add_argument("target", nargs="?", default=None)
     args = ap.parse_args()
 
     root = Path(__file__).resolve().parent.parent
     local = root / "scenarios.local.json"
+
+    if args.cmd == "reset":
+        local.unlink(missing_ok=True)
+        print(json.dumps({"ok": True, "note": "manual toggles cleared"}, indent=2))
+        return 0
 
     if args.cmd == "list":
         reg = Registry(root)

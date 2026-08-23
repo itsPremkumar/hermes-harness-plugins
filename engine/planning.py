@@ -14,8 +14,6 @@ A plan.md is VALID only if ALL hold:
 from __future__ import annotations
 
 import hashlib
-import json
-import re
 from pathlib import Path
 
 MIN_HYPOTHESES = 2

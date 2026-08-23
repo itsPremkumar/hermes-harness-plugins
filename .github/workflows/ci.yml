@@ -1,0 +1,18 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run harness self-tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+      - name: Lint engine + plugins
+        run: |
+          pip install ruff==0.6.9
+          ruff check engine plugins --select E9,F63,F7,F82,F401 --exclude */__pycache__/*

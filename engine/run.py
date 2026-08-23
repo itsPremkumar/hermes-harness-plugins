@@ -134,11 +134,22 @@ def main() -> int:
     }
 
     best = lineage.best()
+    min_gain_pct = float(mf.get("min_improvement_pct", 0) or 0)
+    threshold = None
+    if isinstance(best, (int, float)) and min_gain_pct > 0:
+        threshold = best * (1 + min_gain_pct / 100.0)
     if not record["correct"]:
         record.update(decision="REJECTED", reason="failed correctness gate")
         state["stagnation"] += 1
     elif not isinstance(record["score"], (int, float)):
         record.update(decision="REJECTED", reason="evaluator returned no numeric score")
+        state["stagnation"] += 1
+    elif threshold is not None and record["score"] < threshold:
+        record.update(decision="REJECTED",
+                      reason=(f"gain {record['score'] - best:+.4g} below "
+                              f"{min_gain_pct}% noise margin (needed "
+                              f">= {threshold:.4g})"),
+                      previous_best=best)
         state["stagnation"] += 1
     elif best is None or record["score"] > best:
         imp = (record["score"] - best) if best is not None else None
@@ -181,9 +192,6 @@ def main() -> int:
     if post:
         print(json.dumps(post.get("payload", {}), indent=2))
         return int(post.get("exit_code", 0))
-
-    nxt_state = dict(state)
-    nxt_state["plan_hash"] = None  # preview only: next tick re-checks freshness
     return 0
 
 
