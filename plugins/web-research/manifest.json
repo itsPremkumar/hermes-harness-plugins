@@ -1,0 +1,8 @@
+{
+  "name": "web-research",
+  "type": "feature",
+  "version": "1.0.0",
+  "enabled": true,
+  "description": "Live-internet data contract: gates refuse until a cited research brief (3+ sources, tamper-evident, optional live URL verification) is stamped.",
+  "provides": ["hooks:pre_gate", "cli:engine/research_cli.py"]
+}
