@@ -1,0 +1,12 @@
+{
+  "name": "coding",
+  "description": "Software-engineering domain: optimize a real Python module under a hard correctness gate plus a throughput benchmark. Generalized from avo-lab.",
+  "evaluator": "evaluator.py",
+  "candidate": "lab/solution.py",
+  "strategies": [
+    "algorithmic",
+    "caching",
+    "builtin-acceleration",
+    "loop-restructuring"
+  ]
+}
