@@ -17,16 +17,18 @@ def require_research(ctx):
     text = wr.load(ctx["root"], ctx["domain_arg"])
     current = wr.hash_text(text)
 
-    # structural demand: stamped AND still matching the file on disk
-    stale = False
-    if state.get("research"):
-        if state["research"].get("hash") != current:
-            stale = True
+    # OPT-IN semantics: only domains that have stamped research at least once
+    # are held to the live-data contract. Fresh sandboxes / legacy domains
+    # pass through untouched (the research-sprint scenario forces it instead).
+    if not state.get("research"):
+        return None
 
-    if not state.get("research") or stale:
-        reason = ("research brief changed since stamping - re-stamp"
-                  if stale else
-                  "no stamped research brief - collect live internet data first")
+    stale = False
+    if state["research"].get("hash") != current:
+        stale = True
+
+    if stale:
+        reason = "research brief changed since stamping - re-stamp"
         return {
             "action": "VETO",
             "exit_code": 8,

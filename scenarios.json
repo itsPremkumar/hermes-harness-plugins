@@ -6,7 +6,7 @@
   },
   "research-sprint": {
     "disable": ["planning"],
-    "enable_only": ["research", "supervision"]
+    "enable_only": ["research", "supervision", "web-research"]
   },
   "prod-guard": {
     "enable_only": ["software", "docs-sync", "planning", "supervision"]

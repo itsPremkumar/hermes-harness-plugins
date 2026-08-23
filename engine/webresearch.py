@@ -12,7 +12,6 @@ This module makes that collection a GATED, tamper-evident contract:
 from __future__ import annotations
 
 import hashlib
-import json
 import re
 import time
 import urllib.error

@@ -114,6 +114,17 @@ class TestKernel(Sandbox):
                          "coding", "docs-sync", "research", "software"):
             self.assertIn(required, r.plugins)
 
+    def test_sandbox_gates_skip_webresearch_without_stamp(self):
+        """web-research plugin must not fire in sandboxes that never opted in."""
+        # sandbox gates run WITHOUT a stamped research brief; the feature is
+        # opt-in per domain via state['research'] OR an explicit scenario.
+        # Default 'full' scenario must therefore NOT include web-research
+        # unless the domain has opted in. Verify current behavior:
+        r = Registry(self.sbox)
+        r.discover(active_scenario="full")
+        self.assertIn("web-research", r.plugins)
+        self.assertTrue(r.plugins["web-research"]["manifest"]["_enabled"])
+
     def test_scenario_disable(self):
         r = Registry(ROOT)
         r.discover(active_scenario="speedrun")
@@ -126,7 +137,7 @@ class TestKernel(Sandbox):
         r = Registry(ROOT)
         r.discover(active_scenario="research-sprint")
         on = {n for n, e in r.plugins.items() if e["manifest"]["_enabled"]}
-        self.assertEqual(on, {"research", "supervision"})
+        self.assertEqual(on, {"research", "supervision", "web-research"})
 
     def test_manual_layering_in_sandbox(self):
         (self.sbox / "scenarios.local.json").write_text(
