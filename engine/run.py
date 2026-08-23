@@ -23,6 +23,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from core import Lineage, State          # noqa: E402
 from kernel import Registry              # noqa: E402
+import locking                            # noqa: E402
 
 
 def load_evaluator(path: Path):
@@ -77,6 +78,18 @@ def main() -> int:
     lineage = Lineage(domain_dir / "lineage.jsonl")
     state_file = domain_dir / "state.json"
     state = State(state_file).load()
+
+    # ---- long-hours safety: one worker per domain at a time -------------
+    try:
+        lock_path = locking.acquire(domain_dir)
+    except locking.DomainBusy as e:
+        print(json.dumps({"event": "domain_busy",
+                          "domain": mf["name"],
+                          "locked_by": e.info,
+                          "hint": "another gate/cron is running this domain; "
+                                  "stale locks are stolen automatically"},
+                         indent=2))
+        return 9
 
     ctx = {
         "root": root,
@@ -198,8 +211,12 @@ def main() -> int:
     post = reg.run_hook("post_gate", ctx)
     if post:
         print(json.dumps(post.get("payload", {}), indent=2))
-        return int(post.get("exit_code", 0))
-    return 0
+        code = int(post.get("exit_code", 0))
+    else:
+        code = 0
+
+    locking.release(lock_path)   # always: success, reject, or veto
+    return code
 
 
 if __name__ == "__main__":

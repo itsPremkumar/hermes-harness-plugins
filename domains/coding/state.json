@@ -1,13 +1,13 @@
 {
-  "iteration": 8,
-  "attempts": 8,
+  "iteration": 12,
+  "attempts": 12,
   "accepted": 3,
   "best_score": 7812500,
   "best_version": "coding-a004",
-  "strategy": "caching",
-  "strategy_index": 1,
+  "strategy": "builtin-acceleration",
+  "strategy_index": 2,
   "strategy_cycles": 0,
-  "stagnation": 1,
+  "stagnation": 2,
   "status": "running",
   "plan_hash": "33b293b92be85110"
 }
