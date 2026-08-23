@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+scenarios.local.json
+goals/*.tmp
+checklists/*.tmp
