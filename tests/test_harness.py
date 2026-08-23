@@ -108,7 +108,11 @@ class TestKernel(Sandbox):
     def test_all_plugins_discovered(self):
         r = Registry(ROOT)
         r.discover()
-        self.assertEqual(len(r.plugins), 9)
+        self.assertGreaterEqual(len(r.plugins), 9)   # 9 shipped + user-added
+        for required in ("planning", "supervision", "goal-registry",
+                         "completion-checklist", "progress-reporter",
+                         "coding", "docs-sync", "research", "software"):
+            self.assertIn(required, r.plugins)
 
     def test_scenario_disable(self):
         r = Registry(ROOT)
